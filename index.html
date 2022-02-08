@@ -1,0 +1,46 @@
+<html>
+	<head>
+		<style>
+			body {
+				overflow: hidden;
+			}
+			iframe {
+				transform: scale(1.15);
+			}
+			#clicker {
+				position: fixed;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				opacity: 1;
+				pointer-events: none;
+				background-color: blue;
+				z-index: 1;
+			}
+			#clicker:after {
+				content: 'CLICK ME';
+			}
+		</style>
+	</head>
+	<body>
+		<iframe
+			width="100%"
+			height="100%"
+			src="https://miro.com/app/live-embed/uXjVOOqfabA=/?moveToViewport=-996,-499,1641,1093&embedAutoplay=true"
+			frameborder="0"
+			scrolling="no"
+			allowfullscreen
+		></iframe>
+		<!-- <script>
+			const clicker = document.createElement('div')
+			clicker.id = 'clicker'
+			document.body.insertBefore(clicker, document.body.firstElementChild)
+
+			window.onclick = () => {
+				
+				clicker.remove()
+			}
+		</script> -->
+	</body>
+</html>
