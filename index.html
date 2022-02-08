@@ -1,25 +1,28 @@
 <html>
 	<head>
 		<style>
+			* {
+				border:0;
+				margin:0;
+				padding:0;
+			}
 			body {
 				overflow: hidden;
 			}
 			iframe {
-				transform: scale(1.15);
+				//transform: scale(1.15);
 			}
-			#clicker {
-				position: fixed;
-				top: 0;
-				left: 0;
-				right: 0;
-				bottom: 0;
-				opacity: 1;
-				pointer-events: none;
-				background-color: blue;
-				z-index: 1;
-			}
-			#clicker:after {
-				content: 'CLICK ME';
+			body:before {
+				content:"";
+				display:block;
+				position:fixed;
+				top:0;
+				left:0;
+				right:0;
+				bottom:0;
+				pointer-events:none;
+				z-index:1;
+				border:1rem solid blue;
 			}
 		</style>
 	</head>
@@ -32,15 +35,5 @@
 			scrolling="no"
 			allowfullscreen
 		></iframe>
-		<!-- <script>
-			const clicker = document.createElement('div')
-			clicker.id = 'clicker'
-			document.body.insertBefore(clicker, document.body.firstElementChild)
-
-			window.onclick = () => {
-				
-				clicker.remove()
-			}
-		</script> -->
 	</body>
 </html>
