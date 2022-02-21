@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="A wonderful description" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script src="https://cdn.jsdelivr.net/npm/contentful@latest/dist/contentful.browser.min.js"></script>
+	</head>
+
+	<body>
+		<script type="module">
+			// https://github.com/contentful/contentful.js/
+			// https://www.contentful.com/blog/2021/04/14/rendering-linked-assets-entries-in-contentful/
+			const SPACE_ID = 'hxk9xb3zr144'
+			const ACCESS_TOKEN = 'd591fd7a5e9fcd1a4168e34a6af20af3993f991cb27252c5a1ed9f9e2e0181b3'
+			const endpoint = 'https://graphql.contentful.com/content/v1/spaces/' + SPACE_ID
+			const client = contentful.createClient({
+				space: SPACE_ID,
+				accessToken: ACCESS_TOKEN,
+			})
+			const PRODUCT_CONTENT_TYPE_ID = 'project'
+			const contentfulClient = contentful.createClient({
+				space: SPACE_ID,
+				accessToken: ACCESS_TOKEN,
+			})
+			contentfulClient
+				.getEntries({
+					content_type: PRODUCT_CONTENT_TYPE_ID,
+				})
+				.then(function (entries) {
+					document.body.innerHTML = renderProducts(entries.items)
+				})
+
+			function renderProducts(products) {
+				return '<h1>Events</h1>' + '<div class="events">' + products.map(renderSingleProject).join('\n') + '</div>'
+			}
+			function renderSingleProject(project) {
+				var fields = project.fields
+				console.log(fields)
+				return `<div class="project">
+					<h2>${fields.title}</h2>
+					<div class="images">${fields.images?.map(renderSingleImage).join('\n')}</div>
+					</div>`
+			}
+			function renderSingleImage(image) {
+				var fields = image.fields
+				console.log(fields)
+				return `<div class="project">
+					<img src="${fields?.file?.url.replace('//', 'https://')}?fm=jpg">
+					</div>`
+			}
+		</script>
+	</body>
+</html>
