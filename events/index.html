@@ -37,18 +37,35 @@
 			}
 			function renderSingleProject(project) {
 				var fields = project.fields
-				console.log(fields)
+				// console.log(fields)
 				return `<div class="project">
 					<h2>${fields.title}</h2>
+					<div class="text">${fields?.mainContent.content?.map(renderSingleParagraph).join('\n') ?? ''}</div>
 					<div class="images">${fields?.images?.map(renderSingleImage).join('\n') ?? ''}</div>
 					</div>`
 			}
+			function renderSingleParagraph(paragraph) {
+				var fields = paragraph.fields
+				console.log(fields)
+				return `<p>
+					<div class="text">${fields?.content?.map(renderSingleNode).join('\n') ?? ''}</div>
+
+					</p>`
+			}
+			function renderSingleNode(node) {
+				switch (node.nodeType) {
+					case 'text':
+						return `<p>${node.value}</p>`
+					case 'hyperlink':
+						return `<img src="${node.data.uri}">link</img>`
+				}
+			}
 			function renderSingleImage(image) {
 				var fields = image.fields
-				console.log(fields)
-				return `<div class="image">
-					<img src="${fields?.file?.url.replace('//', 'https://')}?fm=jpg">
-					</div>`
+				// console.log(fields)
+				// return `<div class="image">
+				// 	<img src="${fields?.file?.url.replace('//', 'https://')}?fm=jpg">
+				// 	</div>`
 			}
 		</script>
 	</body>
