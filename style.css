@@ -1,0 +1,60 @@
+* {
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+html {
+	overflow: hidden;
+}
+body {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: black;
+	animation: hue-animation 60s infinite;
+}
+div {
+	position: absolute;
+	width: 50vw;
+	height: 100vh;
+}
+
+iframe {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: left;
+}
+#left,
+#left iframe {
+	left: 0;
+}
+#right,
+#right iframe {
+	right: 0;
+}
+#right {
+	filter: invert(1);
+}
+#left iframe {
+	transform: scaleX(1);
+}
+#right iframe {
+	transform: scaleX(-1);
+}
+@keyframes hue-animation {
+	0% {
+		filter: hue-rotate(0deg);
+	}
+
+	50% {
+		filter: hue-rotate(100deg);
+	}
+
+	100% {
+		filter: hue-rotate(0deg);
+	}
+}
