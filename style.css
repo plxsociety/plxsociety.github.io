@@ -12,8 +12,9 @@ body {
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background-color: black;
-	background-image: url('bg.jpeg');
-	background-size: object-fit;
+}
+
+img {
+	object-fit: cover;
 }
 
