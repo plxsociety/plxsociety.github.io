@@ -7,6 +7,7 @@ html {
 	overflow: hidden;
 }
 body,
+iframe,
 img {
 	position: fixed;
 	top: 0;
@@ -14,8 +15,8 @@ img {
 	right: 0;
 	bottom: 0;
 }
+iframe,
 img {
 	object-fit: cover;
 	object-position: center center;
 }
-
